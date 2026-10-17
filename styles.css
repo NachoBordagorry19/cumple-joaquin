@@ -1,0 +1,268 @@
+/* ==========================================================================
+   GP JOAQUÍN - DEL CAMPO AL PADDOCK Y AL BAILE (EDICIÓN TRICOLOR)
+   Custom CSS: F1 Telemetry HUD + Gentleman Pinstripe + Club Nacional Colors
+   ========================================================================== */
+
+:root {
+  --cnf-blue: #0038A8;
+  --cnf-blue-bright: #1d5fe0;
+  --cnf-blue-deep: #040d21;
+  --cnf-navy: #071330;
+  --cnf-red: #E63946;
+  --cnf-red-glow: rgba(230, 57, 70, 0.75);
+  --cnf-white: #FFFFFF;
+  --pinstripe-light: rgba(147, 197, 253, 0.08);
+  --pinstripe-card: rgba(186, 230, 253, 0.09);
+  --f1-green: #00f59b;
+  --f1-purple: #c084fc;
+  --f1-amber: #fbbf24;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--cnf-blue-deep);
+  color: var(--cnf-white);
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  overflow-x: hidden;
+  user-select: none;
+}
+
+.font-f1 {
+  font-family: 'Chakra Petch', sans-serif;
+  letter-spacing: 0.04em;
+}
+
+.font-mono-telemetry {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* ==========================================================================
+   PATRÓN GENTLEMAN CAPITALISTA (CAMISA A RAYAS / PINSTRIPE FORMAL)
+   ========================================================================== */
+.pinstripe-bg {
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.03) 0px,
+    rgba(255, 255, 255, 0.03) 1px,
+    transparent 1px,
+    transparent 10px,
+    rgba(96, 165, 250, 0.06) 10px,
+    rgba(96, 165, 250, 0.06) 12px,
+    transparent 12px,
+    transparent 22px
+  );
+}
+
+/* Tarjeta estilo camisa Oxford a rayas azul claro y blanco */
+.pinstripe-shirt-card {
+  background-color: rgba(5, 20, 52, 0.76);
+  background-image:
+    linear-gradient(135deg, rgba(0, 56, 168, 0.42) 0%, rgba(4, 13, 33, 0.88) 65%, rgba(230, 57, 70, 0.14) 100%),
+    repeating-linear-gradient(
+      90deg,
+      rgba(191, 219, 254, 0.07) 0px,
+      rgba(191, 219, 254, 0.07) 1.5px,
+      transparent 1.5px,
+      transparent 9px,
+      rgba(255, 255, 255, 0.045) 9px,
+      rgba(255, 255, 255, 0.045) 10.5px,
+      transparent 10.5px,
+      transparent 18px
+    );
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+}
+
+/* Cinta de camisa formal (detalle cuello/puño gentleman) */
+.pinstripe-collar-strip {
+  background-image: repeating-linear-gradient(
+    90deg,
+    #ffffff 0px,
+    #ffffff 3px,
+    #bfdbfe 3px,
+    #bfdbfe 7px,
+    #0038A8 7px,
+    #0038A8 9px,
+    #bfdbfe 9px,
+    #bfdbfe 13px
+  );
+}
+
+/* ==========================================================================
+   BANDA TRICOLOR (CLUB NACIONAL DE FOOTBALL)
+   ========================================================================== */
+.tricolor-bar {
+  background: linear-gradient(
+    90deg,
+    #0038A8 0%,
+    #0038A8 38%,
+    #FFFFFF 38%,
+    #FFFFFF 62%,
+    #E63946 62%,
+    #E63946 100%
+  );
+}
+
+.tricolor-border-glow {
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.14),
+    0 12px 40px -10px rgba(0, 56, 168, 0.65),
+    0 0 25px -5px rgba(230, 57, 70, 0.25);
+}
+
+/* Patrón bandera a cuadros sutil */
+.checkered-pattern {
+  background-image:
+    linear-gradient(45deg, rgba(255,255,255,0.12) 25%, transparent 25%),
+    linear-gradient(-45deg, rgba(255,255,255,0.12) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, rgba(255,255,255,0.12) 75%),
+    linear-gradient(-45deg, transparent 75%, rgba(255,255,255,0.12) 75%);
+  background-size: 16px 16px;
+  background-position: 0 0, 0 8px, 8px -8px, -8px 0;
+}
+
+/* ==========================================================================
+   SEMÁFORO DE LARGADA F1 (5 LUCES ROJAS)
+   ========================================================================== */
+.f1-gantry {
+  background: linear-gradient(180deg, #111827 0%, #070b14 100%);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.85),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.f1-light-pod {
+  background: linear-gradient(180deg, #0b0f19 0%, #05070c 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.f1-bulb {
+  background: radial-gradient(circle at 35% 35%, #2a1215 0%, #140709 70%, #090304 100%);
+  border: 2px solid #262936;
+  transition:
+    background 0.12s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.12s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.12s ease,
+    border-color 0.12s ease;
+}
+
+.f1-bulb.is-lit {
+  background: radial-gradient(circle at 35% 35%, #ff9ea6 0%, #ff2a3c 35%, #E63946 70%, #990f1b 100%);
+  border-color: #ff8fa3;
+  box-shadow:
+    0 0 18px 4px rgba(230, 57, 70, 0.9),
+    0 0 42px 10px rgba(230, 57, 70, 0.55),
+    inset 0 0 10px rgba(255, 255, 255, 0.65);
+  transform: scale(1.04);
+}
+
+.f1-bulb.lights-out {
+  background: radial-gradient(circle at 35% 35%, #1f2937 0%, #0f172a 75%);
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: none;
+  transform: scale(1);
+}
+
+/* ==========================================================================
+   ANIMACIONES DE SLIDE Y TELEMETRÍA
+   ========================================================================== */
+@keyframes slideEnterRight {
+  0% {
+    opacity: 0;
+    transform: translate3d(36px, 0, 0) scale(0.985);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes slideEnterLeft {
+  0% {
+    opacity: 0;
+    transform: translate3d(-36px, 0, 0) scale(0.985);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes cardRevealUp {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 18px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 12px rgba(0, 245, 155, 0.65);
+  }
+  50% {
+    opacity: 0.72;
+    box-shadow: 0 0 4px rgba(0, 245, 155, 0.25);
+  }
+}
+
+.animate-slide-right {
+  animation: slideEnterRight 0.42s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.animate-slide-left {
+  animation: slideEnterLeft 0.42s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.animate-card-up {
+  animation: cardRevealUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.drs-active-pill {
+  animation: pulseGlow 2s infinite ease-in-out;
+}
+
+/* Barras de RPM F1 */
+.rpm-led {
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+/* Scrollbar personalizada tricolor */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #040d21;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #0038A8;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #E63946;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-slide-right,
+  .animate-slide-left,
+  .animate-card-up,
+  .drs-active-pill {
+    animation: none !important;
+  }
+}

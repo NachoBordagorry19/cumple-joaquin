@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>GP Joaquín • Del Campo al Paddock y al Baile (Edición Tricolor)</title>
+  <meta name="description" content="Telemetría Oficial de las 13 Vueltas • Edición Tricolor Club Nacional de Football • ¡Feliz Cumpleaños, Hermano!" />
+
+  <!-- Google Fonts: Chakra Petch (F1 Display), JetBrains Mono (Telemetry), Plus Jakarta Sans (Body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,500;0,600;0,700;1,700&family=JetBrains+Mono:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            cnfBlue: '#0038A8',
+            cnfRed: '#E63946',
+            cnfWhite: '#FFFFFF',
+            paddockDark: '#040d21'
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body class="bg-[#040d21] text-white min-h-screen antialiased selection:bg-[#E63946] selection:text-white">
+
+  <!-- ========================================================================
+       1. SPLASH SCREEN (SEMÁFORO DE LARGADA F1)
+       ======================================================================== -->
+  <section
+    id="splash-screen"
+    class="relative min-h-dvh w-full flex flex-col justify-between overflow-hidden pinstripe-bg transition-all duration-500 ease-out"
+  >
+    <!-- Halos de luz Tricolor de fondo -->
+    <div class="pointer-events-none absolute -top-32 -left-32 w-96 h-96 rounded-full bg-[#0038A8]/45 blur-[120px]"></div>
+    <div class="pointer-events-none absolute top-1/3 -right-32 w-96 h-96 rounded-full bg-[#E63946]/30 blur-[130px]"></div>
+    <div class="pointer-events-none absolute -bottom-28 left-1/3 w-96 h-96 rounded-full bg-[#0038A8]/35 blur-[110px]"></div>
+
+    <!-- Barra Tricolor Superior -->
+    <header class="relative z-10 w-full">
+      <div class="h-2 w-full tricolor-bar"></div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-8 py-4 flex flex-wrap items-center justify-between gap-3 border-b border-white/10 bg-[#040d21]/70 backdrop-blur-md">
+        <div class="flex items-center gap-3">
+          <div class="flex items-center overflow-hidden rounded border border-white/25 shadow">
+            <span class="w-3 h-5 bg-[#0038A8]"></span>
+            <span class="w-3 h-5 bg-white"></span>
+            <span class="w-3 h-5 bg-[#E63946]"></span>
+          </div>
+          <span class="font-f1 font-bold text-xs sm:text-sm tracking-widest uppercase text-white">
+            ESCUDERÍA DECANO • C.N.deF. PADDOCK CLUB
+          </span>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <button
+            id="btn-toggle-sound"
+            type="button"
+            class="font-mono-telemetry text-[11px] px-3 py-1 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 text-blue-100 transition cursor-pointer"
+          >
+            🔊 AUDIO FIA: ON
+          </button>
+          <span class="hidden sm:inline-flex items-center gap-1.5 font-mono-telemetry text-xs text-[#00f59b] bg-[#00f59b]/10 border border-[#00f59b]/30 px-3 py-1 rounded-full">
+            <span class="w-2 h-2 rounded-full bg-[#00f59b] animate-pulse"></span>
+            DRS ENABLED
+          </span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Contenido Central del Semáforo de Largada -->
+    <main class="relative z-10 flex-1 flex flex-col items-center justify-center px-4 py-6 sm:py-10 max-w-5xl mx-auto text-center">
+      <!-- Insignia de Edición -->
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0038A8]/40 border border-blue-400/35 text-blue-100 text-xs sm:text-sm font-f1 font-semibold tracking-widest uppercase mb-5 shadow-lg">
+        <span>🏁 GRAN PREMIO HOMENAJE • 13 VUELTAS HISTÓRICAS</span>
+      </div>
+
+      <h1 class="font-f1 font-bold italic text-3xl sm:text-5xl md:text-6xl text-white tracking-tight leading-none mb-3 drop-shadow-[0_10px_25px_rgba(0,0,0,0.8)]">
+        DEL CAMPO AL PADDOCK <br class="hidden sm:inline" />
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-200 to-[#E63946]">
+          Y AL BAILE
+        </span>
+      </h1>
+
+      <p class="text-sm sm:text-base md:text-lg text-blue-100/85 max-w-2xl mx-auto mb-7 font-normal">
+        Edición Tricolor • Gentleman Capitalista • Telemetría oficial de una amistad de fierro desde los 12 años hasta las 06:52 AM.
+      </p>
+
+      <!-- PÓRTICO DE 5 LUCES ROJAS DE F1 -->
+      <div class="w-full max-w-xl mx-auto mb-7">
+        <div class="f1-gantry rounded-3xl p-4 sm:p-6 relative overflow-hidden">
+          <!-- Detalle superior tricolor en el pórtico -->
+          <div class="absolute top-0 left-0 right-0 h-1 tricolor-bar"></div>
+
+          <div class="flex items-center justify-between text-[11px] font-mono-telemetry text-slate-400 mb-3 px-1">
+            <span>FIA START SYSTEM // MONTEVIDEO GP</span>
+            <span id="gantry-status-text" class="text-red-300 font-semibold">INICIANDO SECUENCIA DE LARGADA...</span>
+          </div>
+
+          <!-- Las 5 Columnas del Semáforo F1 -->
+          <div class="grid grid-cols-5 gap-2.5 sm:gap-4">
+            <!-- Luz 1 -->
+            <div data-light-column="1" class="f1-light-pod rounded-2xl p-2.5 sm:p-3.5 flex flex-col items-center gap-2.5">
+              <div class="w-8 h-8 sm:w-11 sm:h-11 rounded-full f1-bulb"></div>
+              <div class="w-8 h-8 sm:w-11 sm:h-11 rounded-full f1-bulb"></div>
+              <span class="font-mono-telemetry text-[10px] text-white/40">01</span>
+            </div>
+            <!-- Luz 2 -->
+            <div data-light-column="2" class="f1-light-pod rounded-2xl p-2.5 sm:p-3.5 flex flex-col items-center gap-2.5">
+              <div class="w-8 h-8 sm:w-11 sm:h-11 rounded-full f1-bulb"></div>
+              <div class="w-8 h-8 sm:w-11 sm:h-11 rounded-full f1-bulb"></div>
+              <span class="font-mono-telemetry text-[10px] text-white/40">02</span>
+            </div>
+            <!-- Luz 3 -->
+            <div data-light-column="3" class="f1-light-pod rounded-2xl p-2.5 sm:p-3.5 flex flex-col items-center gap-2.5">
+              <div class="w-8 h-8 sm:w-11 sm:h-11 rounded-full f1-bulb"></div>
+              <div class="w-8 h-8 sm:w-11 sm:h-11 rounded-full f1-bulb"></div>
+              <span class="font-mono-telemetry text-[10px] text-white/40">03</span>
+            </div>
+            <!-- Luz 4 -->
+            <div data-light-column="4" class="f1-light-pod rounded-2xl p-2.5 sm:p-3.5 flex flex-col items-center gap-2.5">
+              <div class="w-8 h-8 sm:w-11 sm:h-11 rounded-full f1-bulb"></div>
+              <div class="w-8 h-8 sm:w-11 sm:h-11 rounded-full f1-bulb"></div>
+              <span class="font-mono-telemetry text-[10px] text-white/40">04</span>
+            </div>
+            <!-- Luz 5 -->
+            <div data-light-column="5" class="f1-light-pod rounded-2xl p-2.5 sm:p-3.5 flex flex-col items-center gap-2.5">
+              <div class="w-8 h-8 sm:w-11 sm:h-11 rounded-full f1-bulb"></div>
+              <div class="w-8 h-8 sm:w-11 sm:h-11 rounded-full f1-bulb"></div>
+              <span class="font-mono-telemetry text-[10px] text-white/40">05</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Botón Principal de Largada -->
+      <button
+        id="btn-launch-telemetry"
+        type="button"
+        class="group relative inline-flex items-center justify-center gap-3 px-8 sm:px-10 py-4 sm:py-5 rounded-2xl font-f1 font-bold text-base sm:text-xl tracking-widest uppercase bg-gradient-to-r from-[#0038A8] via-[#134ec4] to-[#E63946] text-white border border-white/35 shadow-[0_0_40px_rgba(230,57,70,0.55)] hover:shadow-[0_0_55px_rgba(230,57,70,0.85)] hover:scale-[1.02] active:scale-95 transition-all duration-200 cursor-pointer"
+      >
+        <span>LARGAR TELEMETRÍA</span>
+        <svg class="w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+        </svg>
+      </button>
+
+      <!-- Mini fichas de pre-carrera -->
+      <div class="mt-7 grid grid-cols-3 gap-2.5 sm:gap-4 w-full max-w-lg text-left">
+        <div class="pinstripe-shirt-card rounded-xl p-3 border border-white/15">
+          <div class="text-[10px] font-mono-telemetry text-blue-300 uppercase">DISTANCIA</div>
+          <div class="font-f1 font-bold text-sm sm:text-base text-white">13 Vueltas</div>
+        </div>
+        <div class="pinstripe-shirt-card rounded-xl p-3 border border-white/15">
+          <div class="text-[10px] font-mono-telemetry text-blue-300 uppercase">UNIFORME</div>
+          <div class="font-f1 font-bold text-sm sm:text-base text-white">Camisa a Rayas</div>
+        </div>
+        <div class="pinstripe-shirt-card rounded-xl p-3 border border-white/15">
+          <div class="text-[10px] font-mono-telemetry text-blue-300 uppercase">CORAZÓN</div>
+          <div class="font-f1 font-bold text-sm sm:text-base text-[#E63946]">100% Bolso</div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer del Splash -->
+    <footer class="relative z-10 py-3 px-4 text-center text-xs font-mono-telemetry text-white/50 border-t border-white/10 bg-[#040d21]/70">
+      USÁ FLECHAS DEL TECLADO (← →), SWIPE EN CELULAR O LOS CONTROLES EN PANTALLA
+    </footer>
+  </section>
+
+  <!-- ========================================================================
+       2. EL RECORRIDO DE LAS 13 FOTOS ("LAS 13 VUELTAS" - DASHBOARD F1)
+       ======================================================================== -->
+  <section
+    id="telemetry-screen"
+    class="hidden opacity-0 transition-opacity duration-500 min-h-dvh lg:h-dvh w-full flex flex-col justify-between pinstripe-bg overflow-x-hidden"
+  >
+    <!-- TOP BAR: TELEMETRÍA F1 + 3 SECTORES -->
+    <header class="w-full bg-[#040d21]/90 backdrop-blur-xl border-b border-white/15 z-30 shrink-0">
+      <div class="h-1.5 w-full tricolor-bar"></div>
+
+      <div class="max-w-[1600px] mx-auto px-3 sm:px-6 py-2.5 flex flex-col gap-2.5">
+        <!-- Fila 1: Indicadores de Telemetría en Vivo -->
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <!-- Izquierda: Escudería + Vuelta Actual + Sector -->
+          <div class="flex items-center gap-2 sm:gap-3">
+            <div class="flex items-center overflow-hidden rounded border border-white/30">
+              <span class="w-2.5 h-5 bg-[#0038A8]"></span>
+              <span class="w-2.5 h-5 bg-white"></span>
+              <span class="w-2.5 h-5 bg-[#E63946]"></span>
+            </div>
+
+            <span
+              id="hud-lap-counter"
+              class="font-f1 font-bold text-sm sm:text-base px-3 py-1 rounded-md bg-[#0038A8] border border-blue-300/40 text-white tracking-wider shadow"
+            >
+              VUELTA 1/13
+            </span>
+
+            <span
+              id="hud-sector-label"
+              class="hidden md:inline-block font-f1 font-semibold text-xs sm:text-sm text-blue-200 tracking-wider"
+            >
+              SECTOR 1: LOS INICIOS EN BOXES
+            </span>
+          </div>
+
+          <!-- Derecha: DRS Enabled + Tiempos de Vuelta + Neumático + Botón Grilla -->
+          <div class="flex items-center gap-2 sm:gap-3">
+            <!-- DRS Pill -->
+            <div
+              id="hud-drs-badge"
+              class="drs-active-pill flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#00f59b]/15 border border-[#00f59b]/60 text-[#00f59b] font-mono-telemetry font-bold text-[11px] sm:text-xs"
+            >
+              <span class="w-2 h-2 rounded-full bg-[#00f59b]"></span>
+              <span>DRS ENABLED</span>
+            </div>
+
+            <!-- Lap Time -->
+            <div class="hidden sm:flex items-center gap-2 bg-[#071330] border border-white/15 px-3 py-1 rounded-md font-mono-telemetry text-xs">
+              <span class="text-white/50">LAP</span>
+              <span id="hud-lap-time" class="text-[#c084fc] font-bold">01:18.899</span>
+            </div>
+
+            <!-- Live Session Timer -->
+            <div class="hidden lg:flex items-center gap-2 bg-[#071330] border border-white/15 px-3 py-1 rounded-md font-mono-telemetry text-xs">
+              <span class="text-white/50">SESSION</span>
+              <span id="hud-session-timer" class="text-white font-semibold">00:00.000</span>
+            </div>
+
+            <!-- Speed & Gear & Tyre -->
+            <div class="hidden xl:flex items-center gap-2 bg-[#071330] border border-white/15 px-3 py-1 rounded-md font-mono-telemetry text-xs">
+              <span id="hud-speed" class="text-blue-200 font-bold">242 KM/H</span>
+              <span id="hud-gear" class="px-1.5 py-0.5 rounded bg-white/10 text-white font-bold">G5</span>
+              <div id="hud-tyre" class="w-6 h-6 rounded-full border-2 border-[#E63946] text-[#E63946] flex items-center justify-center font-f1 font-bold text-xs">
+                S
+              </div>
+            </div>
+
+            <!-- Botón Rápido para ir a Grilla / Podio -->
+            <button
+              type="button"
+              onclick="openPodiumScreen()"
+              class="px-3 py-1.5 rounded-lg bg-white/10 hover:bg-[#0038A8] border border-white/20 text-xs font-f1 font-bold tracking-wider uppercase text-white transition cursor-pointer"
+              title="Ver el Podio y las 13 fotos en grilla"
+            >
+              🏁 PODIO / GRILLA
+            </button>
+          </div>
+        </div>
+
+        <!-- Fila 2: Barra de Progreso dividida en 3 Sectores -->
+        <div id="sectors-progress-grid" class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+          <!-- Renderizado dinámicamente por app.js -->
+        </div>
+      </div>
+    </header>
+
+    <!-- ÁREA CENTRAL INTERACTIVA: CARRUSEL FOTO + FICHA DE TELEMETRÍA -->
+    <main
+      id="telemetry-swipe-area"
+      class="flex-1 w-full max-w-[1600px] mx-auto px-3 sm:px-6 py-3 sm:py-4 grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6 items-stretch min-h-0"
+    >
+      <!-- Columna Foto (7/12 en Desktop) -->
+      <div
+        id="photo-stage-wrapper"
+        class="lg:col-span-7 w-full h-[46dvh] sm:h-[54dvh] lg:h-full min-h-[300px] flex items-center justify-center"
+      >
+        <!-- Renderizado dinámicamente por app.js -->
+      </div>
+
+      <!-- Columna Ficha de Telemetría (5/12 en Desktop) -->
+      <div
+        id="telemetry-card-wrapper"
+        class="lg:col-span-5 w-full flex flex-col justify-between min-h-0"
+      >
+        <!-- Renderizado dinámicamente por app.js -->
+      </div>
+    </main>
+
+    <!-- FOOTER DEL DASHBOARD -->
+    <footer class="w-full bg-[#040d21]/90 border-t border-white/10 py-2 px-4 shrink-0">
+      <div class="max-w-[1600px] mx-auto flex flex-wrap items-center justify-between gap-2 text-[11px] font-mono-telemetry text-white/60">
+        <span>GP JOAQUÍN • TELEMETRÍA OFICIAL TRICOLOR (#0038A8 / #FFFFFF / #E63946)</span>
+        <span class="hidden sm:inline">ATAJOS: [← / →] CAMBIAR VUELTA • CLIC EN LA FOTO PARA ZOOM 100% • SWIPE EN CELULAR</span>
+      </div>
+    </footer>
+  </section>
+
+  <!-- ========================================================================
+       3. SECCIÓN FINAL (EL PODIO / BANDERA A CUADROS + BENTO GRID GALERÍA)
+       ======================================================================== -->
+  <section
+    id="podium-screen"
+    class="hidden relative min-h-dvh w-full pinstripe-bg pb-20 overflow-x-hidden"
+  >
+    <!-- Canvas para Confeti Tricolor (Azul, Blanco y Rojo) -->
+    <canvas
+      id="tricolor-confetti-canvas"
+      class="fixed inset-0 pointer-events-none z-50 w-full h-full"
+    ></canvas>
+
+    <!-- Barra Tricolor Superior -->
+    <div class="h-2 w-full tricolor-bar sticky top-0 z-40"></div>
+
+    <!-- Header de navegación en el Podio -->
+    <header class="sticky top-2 z-30 max-w-7xl mx-auto px-4 sm:px-6 pt-3">
+      <div class="bg-[#040d21]/85 backdrop-blur-xl border border-white/15 rounded-2xl px-4 py-3 flex flex-wrap items-center justify-between gap-3 shadow-2xl">
+        <div class="flex items-center gap-3">
+          <div class="flex items-center overflow-hidden rounded border border-white/25">
+            <span class="w-2.5 h-5 bg-[#0038A8]"></span>
+            <span class="w-2.5 h-5 bg-white"></span>
+            <span class="w-2.5 h-5 bg-[#E63946]"></span>
+          </div>
+          <span class="font-f1 font-bold text-xs sm:text-sm tracking-wider uppercase text-white">
+            🏁 BANDERA A CUADROS • 13/13 VUELTAS COMPLETADAS
+          </span>
+        </div>
+
+        <div class="flex items-center gap-2.5">
+          <button
+            type="button"
+            onclick="launchTricolorConfetti()"
+            class="px-3.5 py-1.5 rounded-xl bg-[#E63946]/25 hover:bg-[#E63946] border border-[#E63946]/60 text-xs font-f1 font-bold tracking-wider uppercase text-white transition cursor-pointer"
+          >
+            🎉 TIRAR CONFETI TRICOLOR
+          </button>
+          <button
+            type="button"
+            onclick="closePodiumToLap(0)"
+            class="px-3.5 py-1.5 rounded-xl bg-[#0038A8] hover:bg-blue-600 border border-white/25 text-xs font-f1 font-bold tracking-wider uppercase text-white transition cursor-pointer"
+          >
+            ↺ RECORRER VUELTAS
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- HERO DEL PODIO / FESTEJO -->
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 pt-10 pb-12 text-center">
+      <div class="pinstripe-shirt-card tricolor-border-glow rounded-3xl p-6 sm:p-10 md:p-12 relative overflow-hidden">
+        <!-- Franja superior bandera a cuadros + tricolor -->
+        <div class="checkered-pattern h-6 w-full absolute top-0 left-0 right-0 opacity-60"></div>
+
+        <!-- Medalla P1 -->
+        <div class="mt-3 inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#E63946] text-white font-f1 font-bold text-xs sm:text-sm tracking-widest uppercase shadow-lg mb-5">
+          <span>🏆 P1 • GANADOR INDISCUTIDO DEL GRAN PREMIO</span>
+        </div>
+
+        <h2 class="font-f1 font-bold italic text-3xl sm:text-5xl md:text-6xl text-white tracking-tight mb-4 drop-shadow">
+          ¡Feliz Cumpleaños, Hermano!
+        </h2>
+
+        <p class="text-base sm:text-lg md:text-xl text-blue-100 max-w-3xl mx-auto leading-relaxed mb-8">
+          De la torta de Nacional a los 12 años y las primeras giras en la plaza, hasta los asados camperos, las camisas a rayas privatizadoras y el sol de frente a las 06:52 AM. Por toda una vida más tirando paredes, saliendo de caravana y yendo siempre al frente.
+        </p>
+
+        <!-- Resumen de Telemetría Final -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-8 text-left">
+          <div class="bg-[#040d21]/75 border border-white/15 rounded-2xl p-4">
+            <div class="text-[11px] font-mono-telemetry text-blue-300 uppercase">VUELTAS</div>
+            <div class="font-f1 font-bold text-xl sm:text-2xl text-white">13 / 13</div>
+            <div class="text-xs text-[#00f59b] font-mono-telemetry mt-0.5">Récord de Pista</div>
+          </div>
+          <div class="bg-[#040d21]/75 border border-white/15 rounded-2xl p-4">
+            <div class="text-[11px] font-mono-telemetry text-blue-300 uppercase">CORAZÓN</div>
+            <div class="font-f1 font-bold text-xl sm:text-2xl text-white">100% Bolso</div>
+            <div class="text-xs text-blue-200 font-mono-telemetry mt-0.5">ADN Tricolor</div>
+          </div>
+          <div class="bg-[#040d21]/75 border border-white/15 rounded-2xl p-4">
+            <div class="text-[11px] font-mono-telemetry text-blue-300 uppercase">ESTILO</div>
+            <div class="font-f1 font-bold text-xl sm:text-2xl text-white">Pinstripe</div>
+            <div class="text-xs text-blue-200 font-mono-telemetry mt-0.5">Gentleman Driver</div>
+          </div>
+          <div class="bg-[#040d21]/75 border border-white/15 rounded-2xl p-4">
+            <div class="text-[11px] font-mono-telemetry text-blue-300 uppercase">CONTRATO</div>
+            <div class="font-f1 font-bold text-xl sm:text-2xl text-[#E63946]">De por vida</div>
+            <div class="text-xs text-red-200 font-mono-telemetry mt-0.5">Escudería Titular</div>
+          </div>
+        </div>
+
+        <!-- Botones de Acción del Podio -->
+        <div class="flex flex-wrap items-center justify-center gap-4">
+          <button
+            type="button"
+            onclick="scrollToBentoGallery()"
+            class="inline-flex items-center gap-2.5 px-7 py-4 rounded-2xl font-f1 font-bold text-sm sm:text-base tracking-wider uppercase bg-gradient-to-r from-[#0038A8] to-[#E63946] text-white border border-white/35 shadow-[0_0_30px_rgba(230,57,70,0.5)] hover:scale-[1.02] transition cursor-pointer"
+          >
+            <span>VER LAS 13 FOTOS JUNTAS EN GRILLA</span>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+
+          <button
+            type="button"
+            onclick="closePodiumToLap(0)"
+            class="inline-flex items-center gap-2 px-6 py-4 rounded-2xl font-f1 font-bold text-sm sm:text-base tracking-wider uppercase bg-white/10 hover:bg-white/20 text-white border border-white/20 transition cursor-pointer"
+          >
+            <span>VOLVER A LA VUELTA 1/13</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- GALERÍA COMPLETA / BENTO GRID DE LAS 13 VUELTAS -->
+    <div id="bento-gallery-section" class="max-w-7xl mx-auto px-4 sm:px-6 pt-4">
+      <div class="flex flex-wrap items-end justify-between gap-4 mb-6 pb-4 border-b border-white/15">
+        <div>
+          <div class="text-xs font-mono-telemetry text-[#E63946] uppercase tracking-widest mb-1">
+            PADDOCK ARCHIVE • BENTO TELEMETRY GRID
+          </div>
+          <h3 class="font-f1 font-bold text-2xl sm:text-3xl text-white">
+            Las 13 Vueltas Completas
+          </h3>
+        </div>
+        <p class="text-xs sm:text-sm text-blue-200/80 font-mono-telemetry">
+          Hacé clic en cualquier foto para ampliarla al 100% o volver a su ficha de telemetría
+        </p>
+      </div>
+
+      <div
+        id="bento-gallery-grid"
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
+      >
+        <!-- Renderizado dinámicamente por app.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       MODAL LIGHTBOX A PANTALLA COMPLETA (SIN RECORTE DE IMAGEN)
+       ======================================================================== -->
+  <div
+    id="photo-lightbox-modal"
+    onclick="closeLightbox()"
+    class="hidden fixed inset-0 z-50 bg-black/90 backdrop-blur-xl flex-col items-center justify-center p-3 sm:p-6"
+  >
+    <div
+      onclick="event.stopPropagation()"
+      class="relative w-full max-w-6xl h-[86dvh] rounded-2xl overflow-hidden border border-white/20 bg-[#030917] flex flex-col shadow-2xl"
+    >
+      <div class="h-1.5 w-full tricolor-bar"></div>
+
+      <!-- Botón Cerrar -->
+      <button
+        type="button"
+        onclick="closeLightbox()"
+        class="absolute top-4 right-4 z-30 px-3.5 py-1.5 rounded-full bg-[#E63946] hover:bg-red-500 text-white font-f1 font-bold text-xs tracking-wider uppercase shadow-lg cursor-pointer"
+      >
+        ✕ CERRAR [ESC]
+      </button>
+
+      <!-- Visor con el mismo tratamiento object-contain + blur-xl opacity-50 -->
+      <div class="relative flex-1 w-full overflow-hidden flex items-center justify-center">
+        <img
+          id="lightbox-img-blur"
+          src=""
+          alt=""
+          aria-hidden="true"
+          class="absolute inset-0 w-full h-full object-cover scale-110 blur-xl opacity-50 pointer-events-none"
+        />
+        <img
+          id="lightbox-img-main"
+          src=""
+          alt=""
+          class="relative z-10 w-full h-full object-contain p-3 sm:p-6"
+        />
+      </div>
+
+      <!-- Pie del Lightbox -->
+      <div class="relative z-20 bg-[#040d21]/95 border-t border-white/15 px-4 sm:px-6 py-3.5">
+        <h4 id="lightbox-title" class="font-f1 font-bold text-base sm:text-lg text-white mb-1"></h4>
+        <p id="lightbox-quote" class="text-xs sm:text-sm text-slate-200 leading-relaxed"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lógica de la Aplicación -->
+  <script src="./app.js"></script>
+</body>
+</html>
